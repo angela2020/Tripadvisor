@@ -1,6 +1,6 @@
 
-#receta de diseño ejercicio 1
-#Conducta_X: int int double -> string
+#receta de dise?o ejercicio 1
+#Conducta_X: int int int -> string
 #Def Conducta_X: Dado ciertas condiciones de (x,y,q)que entregue el resultado ganador (votoSi o votoNo)
 #funcion:
 padronElectoral<-(x+y)
@@ -8,31 +8,43 @@ votosSi<-x
 votosNo<-y
 q<-(0.5+1)(x+y)
 
+casosVotaciones <- list(c(100,30,30),c(100,20,21),c(100,30,10),c(100,40,30),c(100,10,30),c(100,20,40))
+for(caso in casosVotaciones) {
+  padron <- caso[1]
+  votosSi <- caso[2]
+  votosNo <- caso[3]
+  totalVotos(votosSi,votosNo,padron)
+}
+
 totalVotos<-function(x,y,q){
   
   if(x+y<q){
-  }else if(x>=0.3(x+y)){
-    "votoSi"
-  }else if(y>=0.3(x+y)){
-    "votoNo"
-    
-    if(x+y>q){
-    }else if(x>y){
-      "votoSi"
-    }else if(x<y){
-      "votoNo"
+    if(x>=0.3*(q)){
+    print("votoSi")
+    }else if(y>=0.3*(q)){
+    print("votoNo")
     }else{
-      (x=y)
-      "empate"
+      print("se escapo")
+    }
+  }else{
+    if(x>y){
+      print("votoSi")
+    }else if(x<y){
+      print("votoNo")
+    }else{
+      #(x=y)
+      print("empate")
     }
   }
 }
 
 
-#receta de diseño ejercicio 2
+#receta de dise?o ejercicio 2
 #conductaCi:double double int->double
 #DefCi: Dado (cf,i,p)entregue el capital inicial [cf/1+i^p]
 #ejemplo:(1763193,0.08,5) debe dar 1.200.000
+capitalInicial(Cn,i,n)
+
 capitalInicial<-function(cf,i,p){
   cf/1+i^p 
 }
@@ -40,8 +52,8 @@ capitalInicial<-function(cf,i,p){
 
 
 
-#receta de diseño ejercicio 3
-#Conducta: string int -> string
+#receta de dise?o ejercicio 3
+#Conducta: list(string) int -> list(string)
 #Def: devuelve una lista que contiene las palabras de largo N que aparecen en la lista de palabras
 #funcion:
 lista1<-list(angel,lara,moreira)
@@ -53,8 +65,8 @@ palabraDeLargoN<-function(lista1,x){
 
 
 
-#receta de diseño ejercicio 4
-#Conducta:  int ->int
+#receta de dise?o ejercicio 4
+#Conducta:  list(int,int) ->int
 #def:recibe una lista de cartas con la frecuencia de esa carta, y devuelve los puntos totales del mazo.
 #ejemplo: recibe el mazo ((q,2),(k,3)) debe dar 63
 #funcion:

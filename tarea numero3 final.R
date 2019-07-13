@@ -1,5 +1,5 @@
 
-#receta de diseño ejercicio 1
+#receta de dise?o ejercicio 1
 #Conducta_X: int int double -> string
 #Def Conducta_X: Dado ciertas condiciones de (x,y,q)que entregue el resultado ganador (votoSi o votoNo)
 #funcion:
@@ -29,10 +29,12 @@ totalVotos<-function(x,y,q){
 }
 
 
-#receta de diseño ejercicio 2
+#receta de dise?o ejercicio 2
 #conductaCi:double double int->double
 #DefCi: Dado (cf,i,p)entregue el capital inicial [cf/1+i^p]
 #ejemplo:(1763193,0.08,5) debe dar 1.200.000
+
+cf
 capitalInicial<-function(cf,i,p){
   cf/1+i^p 
 }
@@ -40,7 +42,7 @@ capitalInicial<-function(cf,i,p){
 
 
 
-#receta de diseño ejercicio 3
+#receta de dise?o ejercicio 3
 #Conducta: string int -> string
 #Def: devuelve una lista que contiene las palabras de largo N que aparecen en la lista de palabras
 #funcion:
@@ -53,7 +55,7 @@ palabraDeLargoN<-function(lista1,x){
 
 
 
-#receta de diseño ejercicio 4
+#receta de dise?o ejercicio 4
 #Conducta:  int ->int
 #def:recibe una lista de cartas con la frecuencia de esa carta, y devuelve los puntos totales del mazo.
 #ejemplo: recibe el mazo ((q,2),(k,3)) debe dar 63

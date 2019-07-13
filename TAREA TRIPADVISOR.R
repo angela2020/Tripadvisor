@@ -20,11 +20,33 @@ for(refe in referencias){
 }
 
 # ratings_and_types block_wrap ui_section
+
+# Pasar esto a una funcion como vimos a inicio del curso
 paginaAExtraerComentarios <- "https://www.tripadvisor.cl/Restaurant_Review-g294305-d14785102-Reviews-Arpezur_Restaurant-Santiago_Santiago_Metropolitan_Region.html" 
 readComentarios<-read_html(paginaAExtraerComentarios)
 extracccionComentarios<-html_nodes(readComentarios, ".partial_entry")
 textoComentarios<-html_text(extracccionComentarios)
-print(textoComentarios)
+
+todosLosComentarios <- "";
+for(comentario in textoComentarios){
+  todosLosComentarios <- paste(todosLosComentarios,comentario)
+}
+
+splitComentarios <- strsplit(todosLosComentarios," ")
+frecuenciaPalabrasComentarios <- as.data.frame(table(unlist(splitComentarios)))
+
+
+nombreRestaurant <- html_nodes(readComentarios,".h1")
+nombreRestaurant <- html_text(nombreRestaurant)
+nombreRestaurant <- gsub(" ","",nombreRestaurant)
+
+nombreCsv <- paste(nombreRestaurant,".csv",sep = "")
+
+# Tarea como guardar un  csv
+#write.csv()
+
+
+print(todosLosComentarios)
 #limpiar texto
 #textoComentarios<-gsub("\n",textoComentarios)
 
