@@ -25,3 +25,17 @@ readComentarios<-read_html(paginaAExtraerComentarios)
 extracccionComentarios<-html_nodes(readComentarios, ".partial_entry")
 textoComentarios<-html_text(extracccionComentarios)
 print(textoComentarios)
+#limpiar texto
+#textoComentarios<-gsub("\n",textoComentarios)
+
+
+# Separando las palabras por espacio
+splitTextoComentarios <- strsplit(textoComentarios," ")[[1]]
+print(splitTextoComentarios)
+
+# Pasando la informacion a un data frame
+#dfTextoComentarios <- as.data.frame(textoComentarios)
+#str(dfTextoComentarios)
+#tabla de frecuencia
+FrecuenciaDePalabras<-table(dfTextoComentarios)
+#print(FrecuenciaDePalabras)
