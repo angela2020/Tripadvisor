@@ -19,8 +19,7 @@ for(refe in referencias){
   lecturaRefe <- paste("https://www.tripadvisor.cl",refe,sep = "")
 }
 
-# ratings_and_types block_wrap ui_section
-
+###################################################################
 # Pasar esto a una funcion como vimos a inicio del curso
 paginaAExtraerComentarios <- "https://www.tripadvisor.cl/Restaurant_Review-g294305-d14785102-Reviews-Arpezur_Restaurant-Santiago_Santiago_Metropolitan_Region.html" 
 readComentarios<-read_html(paginaAExtraerComentarios)
@@ -31,33 +30,56 @@ todosLosComentarios <- "";
 for(comentario in textoComentarios){
   todosLosComentarios <- paste(todosLosComentarios,comentario)
 }
-
+#generando una tabla de frecuencia con las palabras de los comentarios por restaurant
 splitComentarios <- strsplit(todosLosComentarios," ")
 frecuenciaPalabrasComentarios <- as.data.frame(table(unlist(splitComentarios)))
 
-
+#se extrae y se guarda tipo csv el nombre del restaurant
 nombreRestaurant <- html_nodes(readComentarios,".h1")
 nombreRestaurant <- html_text(nombreRestaurant)
 nombreRestaurant <- gsub(" ","",nombreRestaurant)
-
 nombreCsv <- paste(nombreRestaurant,".csv",sep = "")
 
-# Tarea como guardar un  csv
-#write.csv()
+
+# Almacenando la informacion en CSV
+write.csv(nombreCsv, file="comentarioDeRestaurant.csv")
 
 
-print(todosLosComentarios)
-#limpiar texto
-#textoComentarios<-gsub("\n",textoComentarios)
+######funcion2#########
+i2<-NULL;operacion2<-NULL;result2<-NULL
+     
+funcion2<- for (i in length(nombreRestaurant)) {
+          operacion2<-nombreRestaurant <- html_text(nombreRestaurant)
+                      nombreRestaurant <- gsub(" ","",nombreRestaurant)
+                      nombreCsv <- paste(nombreRestaurant,".csv",sep = "")
+                      write.csv(nombreCsv, file="comentarioDeRestaurant.csv")
+  
+          ;result2<-c(result2,operacion2)
+  
+}
 
 
-# Separando las palabras por espacio
-splitTextoComentarios <- strsplit(textoComentarios," ")[[1]]
-print(splitTextoComentarios)
+##funcion de repeticion y acumulacion de resultados##
 
-# Pasando la informacion a un data frame
-#dfTextoComentarios <- as.data.frame(textoComentarios)
-#str(dfTextoComentarios)
-#tabla de frecuencia
-FrecuenciaDePalabras<-table(dfTextoComentarios)
-#print(FrecuenciaDePalabras)
+i<-NULL;operacion<-NULL;result<-NULL
+
+funcion1<- for (i in 1:length(extracccionComentarios)) {
+  
+  operacion<-textoComentarios<-html_text(extracccionComentarios)
+             todosLosComentarios <- "";
+             for(comentario in textoComentarios){
+             todosLosComentarios <- paste(todosLosComentarios,comentario)
+  }
+  
+             splitComentarios <- strsplit(todosLosComentarios," ")
+             frecuenciaPalabrasComentarios <- as.data.frame(table(unlist(splitComentarios))) 
+             write.csv(nombreCsv, file="comentarioDeRestaurant.csv")
+             
+   ;result<-rbind(resul,operacion) 
+   
+              print(paste(funcion2,i))
+}
+
+
+
+
