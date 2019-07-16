@@ -20,6 +20,8 @@ for(refe in referencias){
 }
 
 ###################################################################
+###################################################################
+###################################################################
 # Pasar esto a una funcion como vimos a inicio del curso
 paginaAExtraerComentarios <- "https://www.tripadvisor.cl/Restaurant_Review-g294305-d14785102-Reviews-Arpezur_Restaurant-Santiago_Santiago_Metropolitan_Region.html" 
 readComentarios<-read_html(paginaAExtraerComentarios)
@@ -48,12 +50,10 @@ write.csv(nombreCsv, file="comentarioDeRestaurant.csv")
 ######funcion2#########
 i2<-NULL;operacion2<-NULL;result2<-NULL
      
-funcion2<- for (i in length(nombreRestaurant)) {
-          operacion2<-nombreRestaurant <- html_text(nombreRestaurant)
-                      nombreRestaurant <- gsub(" ","",nombreRestaurant)
-                      nombreCsv <- paste(nombreRestaurant,".csv",sep = "")
-                      write.csv(nombreCsv, file="comentarioDeRestaurant.csv")
+funcion2<-function(nombreRestaurant,nombreCsv ) {
   
+          operacion2<-for (i in 1:length(nombreRestaurant))
+          write.csv(nombreCsv, file="comentarioDeRestaurant.csv")
           ;result2<-c(result2,operacion2)
   
 }
@@ -63,22 +63,16 @@ funcion2<- for (i in length(nombreRestaurant)) {
 
 i<-NULL;operacion<-NULL;result<-NULL
 
-funcion1<- for (i in 1:length(extracccionComentarios)) {
-  
-  operacion<-textoComentarios<-html_text(extracccionComentarios)
-             todosLosComentarios <- "";
-             for(comentario in textoComentarios){
-             todosLosComentarios <- paste(todosLosComentarios,comentario)
-  }
-  
-             splitComentarios <- strsplit(todosLosComentarios," ")
-             frecuenciaPalabrasComentarios <- as.data.frame(table(unlist(splitComentarios))) 
+funcion1<-function(textoComentarios,todosLosComentarios ){
+  operacion<- for (i in 1:length(extracccionComentarios))
+             splitComentarios <- strsplit(todosLosComentarios," ") 
+             frecuenciaPalabrasComentarios <- as.data.frame(table(unlist(splitComentarios)))
              write.csv(nombreCsv, file="comentarioDeRestaurant.csv")
              
-   ;result<-rbind(resul,operacion) 
-   
+             ;result<-rbind(resul,operacion) 
               print(paste(funcion2,i))
 }
+
 
 
 
