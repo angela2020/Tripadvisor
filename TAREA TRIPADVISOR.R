@@ -50,12 +50,12 @@ write.csv(nombreCsv, file="comentarioDeRestaurant.csv")
 ######funcion2#########
 i2<-NULL;operacion2<-NULL;result2<-NULL
      
-funcion2<-function(nombreRestaurant,nombreCsv ) {
+funcion2<-function(nombreRestaurant) {
   
-          operacion2<-for (i in 1:length(nombreRestaurant))
-          write.csv(nombreCsv, file="comentarioDeRestaurant.csv")
-          ;result2<-c(result2,operacion2)
-  
+          operacion2<-for (i in 1:length(nombreRestaurant)){
+                       write.csv(nombreCsv, file="comentarioDeRestaurant.csv")
+                       ;result2<-c(result2,operacion2)
+          }
 }
 
 
@@ -63,14 +63,12 @@ funcion2<-function(nombreRestaurant,nombreCsv ) {
 
 i<-NULL;operacion<-NULL;result<-NULL
 
-funcion1<-function(textoComentarios,todosLosComentarios ){
-  operacion<- for (i in 1:length(extracccionComentarios))
-             splitComentarios <- strsplit(todosLosComentarios," ") 
+funcion1<-function(textoComentarios){
+  operacion<- for (i in 1:length(textoComentarios)){
              frecuenciaPalabrasComentarios <- as.data.frame(table(unlist(splitComentarios)))
              write.csv(nombreCsv, file="comentarioDeRestaurant.csv")
-             
              ;result<-rbind(resul,operacion) 
-              print(paste(funcion2,i))
+              print(paste(funcion2,i))}
 }
 
 
