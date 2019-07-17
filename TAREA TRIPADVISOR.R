@@ -48,30 +48,31 @@ write.csv(nombreCsv, file="comentarioDeRestaurant.csv")
 
 
 ######funcion2#########
+#extrae n veces el nombre de los restaurantes elegantes 
+#y los guarda en una variable llamada result2.
+
 i2<-NULL;operacion2<-NULL;result2<-NULL
      
-funcion2<-function(nombreRestaurant) {
+funcion2<-function(nombreCsv) {
   
-          operacion2<-for (i in 1:length(nombreRestaurant)){
-                       write.csv(nombreCsv, file="comentarioDeRestaurant.csv")
-                       ;result2<-c(result2,operacion2)
+          operacion2<-for (i in 1:length(nombreCsv)){
+             ;result2<-c(result2,operacion2)
           }
 }
 
 
-##funcion de repeticion y acumulacion de resultados##
+#####funcion1##########################
+#toma los comentarios restaurante por restaurante,lo trasforma en una data frame
+# cada opeacion se guarda en la variable result.
 
 i<-NULL;operacion<-NULL;result<-NULL
 
 funcion1<-function(textoComentarios){
   operacion<- for (i in 1:length(textoComentarios)){
              frecuenciaPalabrasComentarios <- as.data.frame(table(unlist(splitComentarios)))
-             write.csv(nombreCsv, file="comentarioDeRestaurant.csv")
-             ;result<-rbind(resul,operacion) 
-              print(paste(funcion2,i))}
+             ;result<-rbind(result,operacion) 
+              }
+
 }
-
-
-
 
 
