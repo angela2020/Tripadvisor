@@ -47,32 +47,23 @@ nombreCsv <- paste(nombreRestaurant,".csv",sep = "")
 write.csv(nombreCsv, file="comentarioDeRestaurant.csv")
 
 
-######funcion2#########
-#extrae n veces el nombre de los restaurantes elegantes 
-#y los guarda en una variable llamada result2.
-
-i2<-NULL;operacion2<-NULL;result2<-NULL
-     
-funcion2<-function(nombreCsv) {
-  
-          operacion2<-for (i in 1:length(nombreCsv)){
-             ;result2<-c(result2,operacion2)
-          }
-}
-
-
 #####funcion1##########################
 #toma los comentarios restaurante por restaurante,lo trasforma en una data frame
-# cada opeacion se guarda en la variable result.
 
-i<-NULL;operacion<-NULL;result<-NULL
 
-funcion1<-function(textoComentarios){
-  operacion<- for (i in 1:length(textoComentarios)){
-             frecuenciaPalabrasComentarios <- as.data.frame(table(unlist(splitComentarios)))
-             ;result<-rbind(result,operacion) 
-              }
-
+funcion1<-function(textoComentarios,extracccionComentarios,readComentarios,paginaAExtraerComentarios){
+                   todosLosComentarios <- "";
+                   for(comentario in textoComentarios){
+                   todosLosComentarios <- paste(todosLosComentarios,comentario) }
+                   splitComentarios <- strsplit(todosLosComentarios," ")
+                   frecuenciaPalabrasComentarios <- as.data.frame(table(unlist(splitComentarios)))
 }
 
+#funcion2####
+#extrae los nombres de cada restaurant
+funcion2<-function(nombreRestaurant){
+                   nombreRestaurant <- gsub(" ","",nombreRestaurant)
+                   nombreCsv <- paste(nombreRestaurant,".csv",sep = "")}
 
+
+print(funcion2,funcion1)
